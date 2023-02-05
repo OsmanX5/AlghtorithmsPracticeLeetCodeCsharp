@@ -14,7 +14,7 @@ public class Solution {
         ListNode slow= head;
         ListNode fast = head;
         while(fast!=null){
-            Console.WriteLine(fast.val);
+           // Console.WriteLine(fast.val);
             if(fast.next == null )break;
             slow = slow.next;
             if(fast.next.next == null) break;
