@@ -23,7 +23,7 @@ public class Solution {
             return 0;
         SUM(node.right);
         
-        Console.WriteLine($"visit {node.val}");
+        //Console.WriteLine($"visit {node.val}");
         sum+= node.val;
         node.val = sum;
 
