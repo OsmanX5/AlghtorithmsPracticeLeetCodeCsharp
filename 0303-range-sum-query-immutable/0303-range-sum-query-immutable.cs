@@ -1,11 +1,23 @@
 public class NumArray {
-    int[] arr;
+    int[] sums;
     public NumArray(int[] nums) {
-        arr= nums;
+        int n =nums.Length;
+        sums= new int[n];
+        sums[0] = nums[0];
+        for(int i=1;i<n;i++){
+            sums[i] = sums[i-1]+nums[i];
+        }
+        
+        for(int i=0;i<n;i++)Console.Write($" {nums[i] }");
+        Console.WriteLine();
+        for(int i=0;i<n;i++)Console.Write($" {sums[i] }");
     }
     
     public int SumRange(int left, int right) {
-        return arr[left..(right+1)].Sum();
+        int res = sums[right];
+        if(left>0)
+            res -= sums[left-1];
+        return res;
     }
 }
 
