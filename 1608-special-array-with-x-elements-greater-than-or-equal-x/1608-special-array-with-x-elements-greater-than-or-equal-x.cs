@@ -4,7 +4,7 @@ public class Solution {
         int n = nums.Length;
         for(int i=1;i<=n;i++){
             int grater = HowManyGraterThan(i,nums);
-            Console.WriteLine($"grater than {i} = {grater}");
+            //Console.WriteLine($"grater than {i} = {grater}");
             if (i ==grater ) return i;
         }
         return -1;
@@ -12,12 +12,12 @@ public class Solution {
     int HowManyGraterThan(int x,int[] nums){
         int n = nums.Length;
         int index =  nextGraterIndex(x,nums);
-        Console.WriteLine($"index of grater than  {x} = {index}");
+        //Console.WriteLine($"index of grater than  {x} = {index}");
         if(index == -1) return 0;
         return n-index;
     }
     int nextGraterIndex(int x, int[]nums){
-         Console.WriteLine($"BS OF{x}");
+        // Console.WriteLine($"BS OF{x}");
         int n = nums.Length;
         int l=0;
         int r = n-1;
@@ -27,7 +27,7 @@ public class Solution {
             if(nums[mid] >= x)r = mid;
             else l =mid+1;
         }
-        Console.WriteLine($"L = {l} R = {r}");
+       // Console.WriteLine($"L = {l} R = {r}");
         if(l != n && nums[l] >= x) return l;
         return l-1;
     }
