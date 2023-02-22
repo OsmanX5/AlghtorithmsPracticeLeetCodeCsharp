@@ -1,5 +1,19 @@
 public class Solution {
     public int ShipWithinDays(int[] weights, int days) {
+            bool GetDays(int[] nums,int maxWeight,int daysCount){
+                int days =1;
+                int sum=0;
+                int n= nums.Length;
+                for(int i=0;i<n;i++){
+                    if(sum + nums[i]<=maxWeight)
+                        sum+=nums[i];
+                    else{
+                        days++;
+                        sum =nums[i];
+                    }
+                }
+                return days<=daysCount;
+            }
         int l = 0;
         int r = 0;
         int n=weights.Length;
@@ -17,18 +31,5 @@ public class Solution {
         return l;
         
     }
-    bool GetDays(int[] nums,int maxWeight,int daysCount){
-        int days =1;
-        int sum=0;
-        int n= nums.Length;
-        for(int i=0;i<n;i++){
-            if(sum + nums[i]<=maxWeight)
-                sum+=nums[i];
-            else{
-                days++;
-                sum =nums[i];
-            }
-        }
-        return days<=daysCount;
-    }
+
 }
