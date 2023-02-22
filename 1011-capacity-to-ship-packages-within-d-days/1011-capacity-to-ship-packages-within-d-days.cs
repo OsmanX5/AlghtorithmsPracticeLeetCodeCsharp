@@ -1,10 +1,12 @@
 public class Solution {
     public int ShipWithinDays(int[] weights, int days) {
-        int l = weights.Max();
-        int r = weights.Sum();
-        
+        int l = 0;
+        int r = 0;
+        for(int i=0;i<weights.Length;i++){
+            if(weights[i]>l) l =weights[i];
+            r+=weights[i];
+        }
         while(l<r){
-            
             int mid = l+(r-l)/2;
             int d = GetDays(weights,mid);
            // Console.WriteLine($"l ={l} , mid = {mid}  r ={r} , days ={d}");
