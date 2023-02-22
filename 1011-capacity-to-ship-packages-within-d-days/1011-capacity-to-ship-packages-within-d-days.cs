@@ -7,7 +7,7 @@ public class Solution {
             
             int mid = l+(r-l)/2;
             int d = GetDays(weights,mid);
-            Console.WriteLine($"l ={l} , mid = {mid}  r ={r} , days ={d}");
+           // Console.WriteLine($"l ={l} , mid = {mid}  r ={r} , days ={d}");
             if(d<=days) r = mid;
             else l+=1;
         }
