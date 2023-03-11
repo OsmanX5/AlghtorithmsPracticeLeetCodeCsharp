@@ -13,17 +13,15 @@
  */
 public class Solution {
     public TreeNode SortedArrayToBST(int[] nums) {
-        return BST(nums);
-    }
-    TreeNode BST(int[] nums){
         int n = nums.Length;
         if(n==0) return null;
         int mid = n/2;
         TreeNode root = new TreeNode(nums[mid]);
         int[] LeftNums = nums[0..mid];
         int[] RightNums = nums[(mid+1)..n];
-        root.right =BST(RightNums);
-        root.left = BST(LeftNums);
+        root.right =SortedArrayToBST(RightNums);
+        root.left = SortedArrayToBST(LeftNums);
         return root;
     }
+
 }
