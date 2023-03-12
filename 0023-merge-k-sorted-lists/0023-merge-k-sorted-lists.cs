@@ -18,9 +18,10 @@ public class Solution {
         
         ListNode Head = new ListNode();
         ListNode tail = Head;
+        ListNode CurrentNode;
         while (queue.Count > 0)
         {
-            ListNode CurrentNode = queue.Dequeue();
+            CurrentNode = queue.Dequeue();
             tail.next = new ListNode(CurrentNode.val);
             tail = tail.next;
             if (CurrentNode.next != null)
