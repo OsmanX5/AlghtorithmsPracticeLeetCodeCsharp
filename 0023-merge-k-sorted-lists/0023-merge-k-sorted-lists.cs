@@ -12,39 +12,21 @@
 public class Solution {
     public ListNode MergeKLists(ListNode[] lists) {
         PriorityQueue<ListNode,int> queue = new PriorityQueue<ListNode,int>();
-        for (int i = 0; i < lists.Length; i++)
-        {
-            if (lists[i] != null)
-            {
-                queue.Enqueue(lists[i], lists[i].val);
-            }
-        }
+        foreach(ListNode list in lists)
+            if(list!=null)
+                queue.Enqueue(list, list.val);
         
-        ListNode Head = null;
+        ListNode Head = new ListNode();
         ListNode tail = Head;
         while (queue.Count > 0)
         {
-            
             ListNode CurrentNode = queue.Dequeue();
-           // Console.WriteLine($"Cuerrent Node = {CurrentNode.val}");
-            if (Head == null)
-            {
-                Head = new ListNode(CurrentNode.val);
-                tail = Head;
-            }
-            else
-            {
-                tail.next = new ListNode(CurrentNode.val);
-                tail = tail.next;
-            }
+            tail.next = new ListNode(CurrentNode.val);
+            tail = tail.next;
             if (CurrentNode.next != null)
-            {
                 queue.Enqueue(CurrentNode.next, CurrentNode.next.val);
-            }
-            
-
 
         }
-        return Head;
+        return Head.next;
     }
 }
