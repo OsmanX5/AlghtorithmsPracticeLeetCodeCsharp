@@ -14,18 +14,26 @@
 public class Solution {
     public int SumNumbers(TreeNode root) {
         int res =0;
-        void DFS(TreeNode node,int sum){
-            if(node==null)return;
+        Stack<TreeNode> DFS = new Stack<TreeNode>();
+        DFS.Push(root);
+        Dictionary<TreeNode,int> SumToNode = new Dictionary<TreeNode,int>();
+        SumToNode.Add(root,root.val);
+        while(DFS.Count>0){
+            TreeNode CurrentNode = DFS.Pop();
             
-            sum = sum*10+node.val;
-            
-            if(node.left==null && node.right==null) // Is leaf
-                res += sum;
-            
-            DFS(node.right,sum);
-            DFS(node.left,sum);
+            if(CurrentNode.left==null && CurrentNode.right==null){
+                res += SumToNode[CurrentNode];
+            }
+            if (CurrentNode.right!=null){
+                DFS.Push(CurrentNode.right);
+                SumToNode[CurrentNode.right] = SumToNode[CurrentNode]*10 + CurrentNode.right.val;
+            }
+            if (CurrentNode.left!=null){
+                DFS.Push(CurrentNode.left);
+                SumToNode[CurrentNode.left] =  SumToNode[CurrentNode]*10 + CurrentNode.left.val;
+            }
+                
         }
-        DFS(root,0);
         return res;
     }
 
