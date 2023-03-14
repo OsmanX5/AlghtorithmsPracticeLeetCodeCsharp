@@ -16,9 +16,12 @@ public class Solution {
         int res =0;
         void DFS(TreeNode node,int sum){
             if(node==null)return;
+            
             sum = sum*10+node.val;
-            if(node.left==null && node.right==null)
+            
+            if(node.left==null && node.right==null) // Is leaf
                 res += sum;
+            
             DFS(node.right,sum);
             DFS(node.left,sum);
         }
