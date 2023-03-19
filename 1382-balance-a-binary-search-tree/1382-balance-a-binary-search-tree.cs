@@ -37,7 +37,6 @@ public class Solution {
             return r;
         }
         DFS(root);
-        arr.ForEach(x => Console.Write($" {x} "));
         int[] nodes = arr.ToArray();
         return CrateBST(nodes);
     }
