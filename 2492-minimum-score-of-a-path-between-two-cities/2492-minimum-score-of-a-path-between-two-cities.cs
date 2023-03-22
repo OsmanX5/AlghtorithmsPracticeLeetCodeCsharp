@@ -85,22 +85,4 @@ public class UnionFind
         {
             return Sets[find(x)];
         }
-        public List<HashSet<int>> GetSets()
-        {
-            List<HashSet<int>> res = new List<HashSet<int>>();
-            foreach(var pair in Sets) res.Add(pair.Value);
-            return res;
-        }
-        public int SetsCount() => Sets.Count;
-        public override string ToString()
-        {
-            string  res = "";
-            foreach(var set in Sets)
-            {
-                res += $"\n set {set.Key}: [";
-                foreach (int x in set.Value) res += " " + x.ToString() +" ";
-                res += " ]";
-            }
-            return res;
-        }
     }
