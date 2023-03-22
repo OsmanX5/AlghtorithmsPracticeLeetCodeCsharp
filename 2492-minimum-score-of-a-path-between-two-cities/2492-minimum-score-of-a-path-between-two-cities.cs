@@ -1,26 +1,21 @@
 public class Solution {
     public int MinScore(int n, int[][] roads) {
-        List<Tuple<int,int>>[] adjList = new List<Tuple<int,int>>[n+1];
-        bool[] visited = new bool[n+1];
-        for(int i=0;i<=n;i++){
-            adjList[i] =new List<Tuple<int,int>>();
-        }
         UnionFind UF = new UnionFind(n+1);
         foreach(int[] road in roads){
             int a = road[0];
             int b = road[1];
             int w = road[2];
             UF.Union(a,b);
-            adjList[a].Add(new Tuple<int,int>(b,w));
-            adjList[b].Add(new Tuple<int,int>(a,w));
         }
         int res =int.MaxValue;
-        HashSet<int> s =  UF.GetSet(n);
-        foreach(int point in s){
-            foreach(Tuple<int,int> connection in adjList[point]){
-                res = Math.Min(connection.Item2,res);
-            }
+        foreach(int[] road in roads){
+            int a = road[0];
+            int b = road[1];
+            int w = road[2];
+            if(UF.IsConnected(1,a))
+                res = Math.Min(w,res);
         }
+        
         return res;
     }
 }
@@ -81,7 +76,7 @@ public class UnionFind
             }
         }
 
-        public bool connected(int x, int y)
+        public bool IsConnected(int x, int y)
         {
             return find(x) == find(y);
         }
