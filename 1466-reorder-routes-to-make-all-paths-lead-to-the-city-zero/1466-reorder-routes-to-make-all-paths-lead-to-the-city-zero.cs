@@ -1,7 +1,8 @@
 public class Solution {
     public int MinReorder(int n, int[][] connections) {
         GraphNode[] nodes = new GraphNode[n];
-        for(int i = 0; i < n; i++) nodes[i] = new GraphNode(i);
+        for(int i = 0; i < n; i++) 
+            nodes[i] = new GraphNode(i);
         foreach (int[] connection in connections)
         {
             int from = connection[0];
@@ -19,10 +20,8 @@ public class Solution {
             GraphNode current = qu.Dequeue();
             visited[current.val] = true;
             foreach(int x in current.InNodes)
-            {
-                if (visited[x]) continue;
-                qu.Enqueue(nodes[x]);
-            }
+                if (!visited[x])
+                    qu.Enqueue(nodes[x]);
             foreach (int x in current.OutNodes)
             {
                 if (visited[x]) continue;
@@ -37,14 +36,9 @@ public class Solution {
 class GraphNode
 {
     public int val;
-    public List<int> InNodes;
-    public List<int> OutNodes;
-    public GraphNode(int val)
-    {
-        this.val = val;
-        InNodes = new List<int>();
-        OutNodes = new List<int>();
-    }
+    public List<int> InNodes= new List<int>();
+    public List<int> OutNodes= new List<int>();
+    public GraphNode(int val)=>this.val = val;
     public void SwitchFromInToOut(int x)
     {
         InNodes.Remove(x);
