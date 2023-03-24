@@ -6,8 +6,8 @@ public class Solution {
         {
             int from = connection[0];
             int to = connection[1];
-            nodes[from].AddOutNode(to);
-            nodes[to].AddInNode(from);
+            nodes[from].OutNodes.Add(to);
+            nodes[to].InNodes.Add(from);
         }
 
         Queue<GraphNode> qu = new Queue<GraphNode> ();
@@ -30,7 +30,6 @@ public class Solution {
                 if (visited[x]) continue;
                 res++;
                 nodes[x].SwitchFromInToOut(current.val);
-                current.SwitchFromOutToIn(x);
                 qu.Enqueue(nodes[x]);   
             }
         }
@@ -48,26 +47,10 @@ class GraphNode
         InNodes = new List<int>();
         OutNodes = new List<int>();
     }
-    public void AddInNode(int x) => InNodes.Add(x);
-    public void AddOutNode(int x) => OutNodes.Add(x);
     public void SwitchFromInToOut(int x)
     {
         InNodes.Remove(x);
         OutNodes.Add(x);
     }
-    public void SwitchFromOutToIn(int x)
-    {
-        OutNodes.Remove(x);
-        InNodes.Add(x);
-    }   
-    public override string ToString()
-    {
-        string s = "";
-        s += $"{val} : In [ ";
-        foreach(int x in InNodes) s += $" {x} " ;
-        s += "] Out [ ";
-        foreach(int x in OutNodes) s+= $" {x} ";
-        s += "]";
-        return s;
-    }
+
 }
