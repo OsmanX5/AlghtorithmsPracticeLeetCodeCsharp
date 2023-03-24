@@ -18,14 +18,12 @@ public class Solution {
         {
             GraphNode current = qu.Dequeue();
             visited[current.val] = true;
-            //Console.WriteLine($"Curretn = {current.val}");
             foreach(int x in current.InNodes)
             {
                 if (visited[x]) continue;
                 qu.Enqueue(nodes[x]);
             }
-            List<int> outNodes = new List<int>(current.OutNodes);
-            foreach (int x in outNodes)
+            foreach (int x in current.OutNodes)
             {
                 if (visited[x]) continue;
                 res++;
