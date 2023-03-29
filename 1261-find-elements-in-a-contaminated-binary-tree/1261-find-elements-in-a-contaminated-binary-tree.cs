@@ -30,16 +30,17 @@ public class FindElements {
     }
     
     public bool Find(int target) {
-        bool res = false;
-        void DFS(TreeNode node){
-            if(node == null) return;
+        Queue<TreeNode> BFS = new Queue<TreeNode>();
+        BFS.Enqueue(rt);
+        while(BFS.Count>0){
+            TreeNode node = BFS.Dequeue();
             if(node.val == target)
-                res = true;
-            DFS(node.left);
-            DFS(node.right);
+                return true;
+            if (node.left!=null) BFS.Enqueue(node.left);
+            if (node.right!=null)BFS.Enqueue(node.right);
         }
-        DFS(rt);
-        return res;
+
+        return false;
     }
 }
 
