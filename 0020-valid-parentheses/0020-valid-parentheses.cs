@@ -1,31 +1,22 @@
 public class Solution {
     public bool IsValid(string s) {
-        Stack<char> st = new(); 
-        for(int i=0;i<s.Length;i++){
-            char c = s[i];
-            
-            if(IsOpen(c)){
-                st.Push(c);
+        var stack = new Stack<char>();
+        foreach(char c in s){
+            if(isOpen(c)){
+                stack.Push(c);
+                continue;
             }
-            else{
-                if(st.Count>0 &&  st.Peek() == pair(c))st.Pop();
-                else return false;
-            }
-            
+            if((stack.Count==0) ||(c != CloseType(stack.Pop())))
+                return false;
+
         }
-        return st.Count==0;
-        
+        return stack.Count==0;
     }
-    public char pair(char c){
-        if (c == ')') return '(';
-        if (c == ']') return '[';
-        if (c == '}') return '{';
-        return 'x';
-    }
-    public bool IsOpen(char c){
-        if (c == '(') return true;
-        if (c == '[') return true;
-        if (c == '{') return true;
-        return false;
+    bool isOpen(char c)=> c=='{' || c=='[' || c=='(';
+    char CloseType(char c)
+    {
+        if(c=='[') return ']';
+        if(c=='{') return '}';
+        return ')';
     }
 }
