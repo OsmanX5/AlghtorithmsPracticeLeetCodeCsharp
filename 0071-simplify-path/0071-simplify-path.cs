@@ -3,14 +3,12 @@ public class Solution {
         var Dirs  = path.Split('/');
         var st = new Stack<String>();
         foreach(string dir in Dirs){
-            Console.WriteLine(dir);
-            if(string.IsNullOrEmpty(dir)|| dir ==".") 
-                continue;
-            if(dir ==".." ){
-                if(st.Count > 0)st.Pop();
-                continue;
+            switch (dir) {
+                case "":
+                case ".": break;
+                case "..":if (st.Count > 0) st.Pop();break;
+                default: st.Push(dir);break;
             }
-            st.Push(dir);
         }
         return "/"+string.Join("/",st.Reverse());
     }
