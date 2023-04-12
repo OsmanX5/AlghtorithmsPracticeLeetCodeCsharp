@@ -6,7 +6,7 @@ public class Solution {
             switch (dir) {
                 case "":
                 case ".": break;
-                case "..":if (st.Count > 0) st.Pop();break;
+                case "..":st.TryPop(out _);break;
                 default: st.Push(dir);break;
             }
         }
