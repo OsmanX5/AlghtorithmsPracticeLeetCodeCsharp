@@ -18,15 +18,12 @@ public class Solution {
         while(temp!=null){
             ListNode oddNode = temp;
             ListNode EvenNode = temp.next;
-            if(EvenNode == null){
-                LastOdd = oddNode;
-                break;
-            }
+            LastOdd = oddNode;
+            if(EvenNode == null)break;
+            
             ListNode NextOdd = EvenNode.next;
-            if(NextOdd==null){
-                LastOdd = oddNode;
-                break;
-            }
+            if(NextOdd==null)break;
+            
             oddNode.next = NextOdd;
             ListNode NextEven = NextOdd.next;
             EvenNode.next = NextEven;
