@@ -27,7 +27,6 @@ public class Solution {
                 LastOdd = oddNode;
                 break;
             }
-            LastOdd = NextOdd;
             oddNode.next = NextOdd;
             ListNode NextEven = NextOdd.next;
             EvenNode.next = NextEven;
