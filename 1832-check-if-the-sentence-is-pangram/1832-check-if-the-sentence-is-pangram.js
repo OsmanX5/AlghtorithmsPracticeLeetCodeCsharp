@@ -3,6 +3,11 @@
  * @return {boolean}
  */
 var checkIfPangram = function(sentence) {
-    const chars='abcdefghijklmnopqrstuvwxyz';
-    return chars.split('').every(c =>sentence.includes(c) );
+    const dict =new Map()
+    sentence.split('').forEach(
+    c => {
+        if (!(dict.has(c))) dict.set(c,1);
+    }
+    );
+    return dict.size == 26;
 };
