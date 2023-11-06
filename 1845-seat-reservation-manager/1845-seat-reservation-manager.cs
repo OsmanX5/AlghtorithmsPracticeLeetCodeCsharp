@@ -1,17 +1,11 @@
 public class SeatManager {
-    PriorityQueue<int,int> seats;
+    PriorityQueue<int,int> seats = new  PriorityQueue<int,int>();
     public SeatManager(int n) {
-        seats = new  PriorityQueue<int,int>();
-        for(int i=1;i<=n;i++)seats.Enqueue(i,i);
+        for(int i=1;i<=n;i++) seats.Enqueue(i,i);
     }
+    public int Reserve() => seats.Dequeue();
+    public void Unreserve(int x) => seats.Enqueue(x,x);
     
-    public int Reserve() {
-        return seats.Dequeue();
-    }
-    
-    public void Unreserve(int seatNumber) {
-        seats.Enqueue(seatNumber,seatNumber);
-    }
 }
 
 /**
