@@ -21,15 +21,12 @@ public class Solution {
         int[] result = new int[n];
         result[0] = head;
         result[1] = cur;
-        
-        var visited = new HashSet<int>(){head , cur};
         for(int i=2;i<n;i++){
             var pairs = adjList[cur];
             int nextItem = pairs[0];
             if(result[i-2] == nextItem) 
                 nextItem=  pairs[1] ;
             result[i] = nextItem;
-            visited.Add(nextItem);
             cur = nextItem;
         }
         
