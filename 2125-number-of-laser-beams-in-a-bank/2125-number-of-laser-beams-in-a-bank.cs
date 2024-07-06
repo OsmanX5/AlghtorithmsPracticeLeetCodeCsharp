@@ -1,14 +1,9 @@
 public class Solution {
     public int NumberOfBeams(string[] bank) {
-        int lastRowDevicesCount =0;
         int res=0;
-        for(int i=0 ;i <bank.Length;i++){
-            int devicesAtRowCount = bank[i].Select(x => x).Where(c => c == '1').Count();
-            if(devicesAtRowCount ==0)
-                continue;
-            res += lastRowDevicesCount * devicesAtRowCount;
-            lastRowDevicesCount = devicesAtRowCount;
-        }
+        int[] devices = bank.Select(row => row.Where(c => c == '1').Count()).Where(x => x!=0 ).ToArray();
+        for (int i=0;i<devices.Length-1;i++)
+            res += devices[i] *devices[i+1];
         return res;
     }
 }
