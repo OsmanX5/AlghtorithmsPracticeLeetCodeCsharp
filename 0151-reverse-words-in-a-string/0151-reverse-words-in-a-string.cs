@@ -1,5 +1,5 @@
 public class Solution {
-    public string ReverseWords(string s) {
-        return String.Join(" ",s.Split(" ").Where(word => word.Length>0).Reverse());
-    }
+    public string ReverseWords(string s) => 
+        String.Join(" ",s.Split(" ").Where(word => word.Length>0).Reverse());
+    
 }
