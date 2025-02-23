@@ -1,16 +1,14 @@
 public class Solution {
     public string MergeAlternately(string word1, string word2) {
-        int n = word1.Length,
-            m = word2.Length;
-        
-        char[] res = new char[n+m];
-        bool first=true;
-        int p1 =0,p2=0;
-        for(int i=0;i<n+m;i++){
-            res[i] =  first? word1[p1++] : word2[p2++];
-            first = p1>=n ? false : p2>=m ? true : !first;
+        int p1 =0;
+        int p2 =0;
+        int n1 = word1.Length;
+        int n2 = word2.Length;
+        string res="";
+        while(p1<n1 || p2<n2){
+            if(p1<n1) res+=word1[p1++];
+            if(p2<n2) res+= word2[p2++];
         }
-
-        return new String(res);
+        return res;
     }
 }
