@@ -7,7 +7,7 @@ var wordPattern = function(pattern, s) {
     let patDict = new Map();
     let words = s.split(" ");
     if(words.length!=pattern.length){
-        console.log('here 3')
+        //console.log('here 3')
         return false;
     }
     for(let i=0;i<pattern.length;i++)
@@ -19,7 +19,7 @@ var wordPattern = function(pattern, s) {
         else{
             for(let [key, value] of patDict){
                 if(key !=p && value ==word){
-                    console.log('here2')
+                    //console.log('here2')
                     return false;
                 }
             }
